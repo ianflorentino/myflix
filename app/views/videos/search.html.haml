@@ -1,0 +1,7 @@
+%article.video_category
+  .videos.row
+    %ul.list-inline
+      - @search.each do |video|
+        %li
+          = link_to video_path(video) do
+            %img(src="#{video.small_cover_url}")
