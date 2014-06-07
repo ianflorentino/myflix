@@ -1,5 +1,7 @@
 class SessionsController < ApplicationController
-  def new; end
+  def new
+    redirect_to home_path if current_user
+  end
 
   def create
     user = User.find_by(email: params[:email])
@@ -24,6 +26,6 @@ class SessionsController < ApplicationController
     session[:user_id] = user.id
     current_user
     flash[:success] = "You are logged in!"
-    redirect_to root_path
+    redirect_to home_path
   end
 end
