@@ -35,18 +35,5 @@ describe VideosController do
       expect(response).to redirect_to sign_in_path
     end
   end
-  describe "POST create review" do
-    it "creates a successful review" do
-      session[:user_id] = Fabricate(:user).id
-      video = Fabricate(:video)
-      post 'reviews#create', video_id: video.id, review: Fabricate.attributes_for(:review)
-      expect(Review.count).to eq(1)
-    end
-    it "does not create a review if body is empty"
-    it "does not create a review if user is not signed in"
-  end
-  describe "GET destroy review" do
-    it "removes a review"
-    it "only allows the user of the review to delete it"
-  end
+
 end
