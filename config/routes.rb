@@ -7,9 +7,10 @@ Myflix::Application.routes.draw do
   get '/sign_in', to: 'sessions#new'
   post '/sign_in', to: 'sessions#create'
   get '/sign_out', to: 'sessions#destroy'
-  get '/register', to:'users#new'
-  get '/my_queue', to: 'queue_item#index'
+  get '/register', to: 'users#new'
+  get '/my_queue', to: 'queue_items#index'
 
+  resources :queue_items, only: [:create, :destroy]
   resources :users, except: [:destroy]
   resources :categories, only: [:show]
   resources :videos, only: [:show] do
