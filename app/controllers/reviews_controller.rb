@@ -2,7 +2,7 @@ class ReviewsController < ApplicationController
   before_action :require_user
 
   def create
-    @video = Video.find_by(params[:video_id])
+    @video = Video.find_by(id: params[:video_id])
     review = @video.reviews.build(params.require(:review).permit(:body, :rating).merge!(user: current_user))
     
     if review.save
@@ -13,7 +13,7 @@ class ReviewsController < ApplicationController
       render 'videos/show'
     end
   end
-
+  
   def destroy
     video = Video.find_by(params[:id])
     review = Review.find_by(params[:id])

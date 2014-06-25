@@ -51,7 +51,7 @@ describe ReviewsController do
       end
     end  
   end
-  describe "GET destroy review" do
+  describe "DELETE destroy review" do
     before do
       @user1 = Fabricate(:user)
       @user2 = Fabricate(:user)
